@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
 
 const Footer: FC = () => {
   return (
@@ -16,14 +17,14 @@ const Footer: FC = () => {
           </p>
           <div className="flex justify-center space-x-10">
             <span>
-              <a href="#" className="hover:border-b border-cyan-400">
+              <Link to="/" className="hover:border-b border-cyan-400">
                 Home
-              </a>
+              </Link>
             </span>
             <span>
-              <a href="#" className="hover:border-b border-cyan-400">
+              <Link to="/episodes" className="hover:border-b border-cyan-400">
                 Episodes
-              </a>
+              </Link>
             </span>
           </div>
         </div>
