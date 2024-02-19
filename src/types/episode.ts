@@ -1,4 +1,4 @@
-export interface Episode {
+export interface EpisodeType {
   id: string;
   name: string;
   air_date: string;
