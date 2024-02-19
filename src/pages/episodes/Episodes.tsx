@@ -1,6 +1,6 @@
 import CardEpisode from "../../components/CardEpisode";
 import { useFetchAll } from "../../hooks/useFetch";
-import { Episode } from "../../types";
+import { EpisodeType } from "../../types";
 
 export default function Episodes() {
   const { data, isLoading, isError, error } = useFetchAll(1);
@@ -25,7 +25,7 @@ export default function Episodes() {
         <div className="grid grid-cols-1 gap-y-8 justify-items-center md:grid-cols-3 md:grid-rows-2 md:justify-items-center">
           {isLoading && <p>Loading...</p>}
           {/* {isError && <p>{error}</p>} */}
-          {listOfEpisodes?.map((episode: Episode) => (
+          {listOfEpisodes?.map((episode: EpisodeType) => (
             <CardEpisode
               key={episode.id}
               name={episode.name}

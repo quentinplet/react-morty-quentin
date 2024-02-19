@@ -17,7 +17,7 @@ const CardCharacter: FC<CardCharacterProps> = ({ url }) => {
             alt={data?.name}
             className="rounded-lg object-contain max-h-40"
           />
-          <p className="text-white font-['Montserrat_Alternates'] font-bold text-xl">
+          <p className="text-white font-['Montserrat_Alternates'] font-bold text-sm">
             {data?.name}
           </p>
         </>
