@@ -1,21 +1,27 @@
 import { FC } from "react";
+import { useFetchOne } from "../hooks/useFetch";
 
 interface CardCharacterProps {
-  name: string;
-  gender: string;
+  url: string;
 }
 
-const CardCharacter: FC<CardCharacterProps> = ({ name, gender }) => {
+const CardCharacter: FC<CardCharacterProps> = ({ url }) => {
+  const { data, isLoading, isError, isSuccess } = useFetchOne(url, url);
+
   return (
     <div className="flex flex-col items-start space-y-4 max-w-48">
-      <img
-        src="../../../public/images/morty_img_test.png"
-        alt=""
-        className="rounded-lg object-contain max-h-40"
-      />
-      <p className="text-white font-['Montserrat_Alternates'] font-bold text-xl">
-        Morty Smith
-      </p>
+      {isSuccess && (
+        <>
+          <img
+            src={data?.image}
+            alt={data?.name}
+            className="rounded-lg object-contain max-h-40"
+          />
+          <p className="text-white font-['Montserrat_Alternates'] font-bold text-xl">
+            {data?.name}
+          </p>
+        </>
+      )}
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import { useQuery } from "react-query";
 import ApiService from "../service/api.service";
 
-function useFetchOne(id?: string) {
-  return useQuery(["episode", 1], () => ApiService.GETONE(id), {
-    keepPreviousData: true,
+function useFetchOne(info: string, url: string) {
+  return useQuery([info], () => ApiService.GETONE(url), {
+    enabled: !!url,
   });
 }
 

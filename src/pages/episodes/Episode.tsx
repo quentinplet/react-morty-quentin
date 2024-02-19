@@ -6,17 +6,21 @@ import { useFetchOne } from "../../hooks/useFetch";
 
 export default function Episode() {
   const { id } = useParams();
-  const { data, isLoading, isError, error, isSuccess } = useFetchOne(id);
+  const url = `https://rickandmortyapi.com/api/episode/${id}`;
+  const { data, isLoading, isError, error, isSuccess } = useFetchOne(
+    "episode",
+    url
+  );
 
-  // if (isLoading) {
-  //   return <p>Loading...</p>;
-  // }
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   if (isError) {
     return <p>{error}</p>;
   }
 
-  if (isSuccess) {
+  if (isSuccess && data) {
     const { name, episode, air_date, characters } = data as EpisodeType;
 
     return (
@@ -42,16 +46,16 @@ export default function Episode() {
               <div className="border-b border-cyan-400"></div>
               <p>Release date : {air_date}</p>
               <div className="border-b border-cyan-400"></div>
-              <p>Characters: {characters.length}</p>
+              <p>Characters: {characters?.length}</p>
               <div className="border-b border-cyan-400"></div>
             </div>
           </div>
           <div className="mx-auto max-w-96 flex flex-col items-center space-y-10 md:max-w-full md:items-start">
             <p className="text-white font-['Montserrat_Alternates'] font-bold text-2xl border-b border-cyan-400">
-              {characters.length} Characters in the episode
+              {characters?.length} Characters in the episode
             </p>
-            <div className="flex flex-col gap-y-20 md:flex-row md:gap-x-10 md:flex-wrap">
-              {characters.map((character: string) => {
+            <div className="flex flex-col gap-y-12 md:flex-row md:gap-x-10 md:flex-wrap">
+              {characters?.map((character: string) => {
                 return <CardCharacter key={character} url={character} />;
               })}
             </div>
