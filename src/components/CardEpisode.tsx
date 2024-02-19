@@ -1,12 +1,19 @@
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "./common/button";
 
 interface CardEpisodeProps {
   episode: string;
   name: string;
   air_date: string;
+  id: number;
 }
 
-const CardEpisode: FC<CardEpisodeProps> = ({ episode, name, air_date }) => {
+const CardEpisode: FC<CardEpisodeProps> = ({ episode, name, air_date, id }) => {
+  const navigate = useNavigate();
+  const navigateToEpisode = () => {
+    navigate(`/episode/${id}`);
+  };
   return (
     <div className="relative w-[368px] h-[180px] border-2 border-cyanLight rounded flex items-center justify-center">
       <img
@@ -21,9 +28,7 @@ const CardEpisode: FC<CardEpisodeProps> = ({ episode, name, air_date }) => {
           <p className="font-medium text-xs">Release: {air_date}</p>
         </div>
         <div>
-          <button className="bg-cyanLight max-w-28 px-4 py-1 rounded-lg border-2 border-cyanDark  hover:bg-cyanDark hover:border-cyanLight">
-            <span className="font-primary font-bold text-sm">See more</span>
-          </button>
+          <Button handleClick={navigateToEpisode}>See more</Button>
         </div>
       </div>
     </div>

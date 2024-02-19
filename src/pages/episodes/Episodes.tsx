@@ -6,7 +6,7 @@ export default function Episodes() {
   const { data, isLoading, isError, error } = useFetchAll(1);
   isError && console.log(error);
   const listOfEpisodes = data?.results;
-  // console.log(listOfEpisodes);
+
   return (
     <div className="h-full bg-zinc-600">
       <div className="relative w-full h-72">
@@ -31,6 +31,7 @@ export default function Episodes() {
               name={episode.name}
               episode={episode.episode}
               air_date={episode.air_date}
+              id={episode.id}
             />
           ))}
         </div>

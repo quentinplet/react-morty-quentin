@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Episode from "./pages/episodes/Episode";
 import Episodes from "./pages/episodes/Episodes";
 import Router from "./router/router";
+import ScrollToTop from "./router/scrollToTop";
 
 export default function App() {
   // console.log(useFetchAll());
@@ -15,6 +16,7 @@ export default function App() {
       {/* <Home /> */}
       <Router />
       <Footer />
+      <ScrollToTop />
     </>
   );
 }
