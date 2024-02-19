@@ -19,3 +19,8 @@ ul {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-primary {
+  color: white;
+  font-family: "Montserrat Alternates";
+}
