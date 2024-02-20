@@ -22,10 +22,11 @@ export default function Episode() {
 
   if (isSuccess && data) {
     const { name, episode, air_date, characters } = data as EpisodeType;
+    console.log(data);
 
     return (
       <div className=" h-full bg-zinc-600">
-        <div className="p-5 md:px-20 md:pt-28 space-y-20">
+        <div className="p-5 md:px-20 md:pt-28 space-y-20 animate-slideUp">
           <div className="mx-auto max-w-96 flex flex-col items-start space-y-8 md:grid md:grid-cols-3 md:max-w-full md:gap-x-16">
             <div className="flex flex-col space-y-5 w-full ">
               <h1 className=" text-white font-['Montserrat_Alternates'] font-bold text-2xl">
@@ -50,11 +51,11 @@ export default function Episode() {
               <div className="border-b border-cyan-400"></div>
             </div>
           </div>
-          <div className="mx-auto max-w-96 flex flex-col items-center space-y-10 md:max-w-full md:items-start">
-            <p className="text-white font-['Montserrat_Alternates'] font-bold text-2xl border-b border-cyan-400">
+          <div className="mx-auto max-w-96 flex flex-col items-center space-y-10 md:max-w-full">
+            <p className="text-white font-['Montserrat_Alternates'] font-bold text-2xl border-b border-cyan-400 lg:self-start">
               {characters?.length} Characters in the episode
             </p>
-            <div className="flex flex-col gap-y-12 md:flex-row md:gap-x-10 md:flex-wrap">
+            <div className="grid grid-cols-1 place-content-center gap-12 sm:grid-cols-2 md:grid-cols-3  lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-7">
               {characters?.map((character: string) => {
                 return <CardCharacter key={character} url={character} />;
               })}

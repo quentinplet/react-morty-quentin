@@ -21,7 +21,7 @@ export default function Home() {
     <div className="min-h-[720px] md:h-[720px]">
       <div className="bg-cover h-full bg-[url('../../public/images/rick_morty_bg_img.png')]">
         <div className="bg-black bg-opacity-75 w-full h-full px-12 py-12 flex justify-center">
-          <div className="flex flex-col items-center justify-center space-y-8 md:items-start">
+          <div className="flex flex-col items-center justify-center space-y-8 md:items-start  animate-slideUp">
             <img
               src="../../public/images/logo.png"
               alt="background-rick-morty-image"
