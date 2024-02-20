@@ -16,9 +16,9 @@ export default function Episode() {
     return <p>Loading...</p>;
   }
 
-  if (isError) {
-    return <p>{error}</p>;
-  }
+  // if (isError) {
+  //   return <p>{error}</p>;
+  // }
 
   if (isSuccess && data) {
     const { name, episode, air_date, characters } = data as EpisodeType;

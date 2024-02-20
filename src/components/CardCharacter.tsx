@@ -35,7 +35,7 @@ const CardCharacter: FC<CardCharacterProps> = ({ url }) => {
           <img
             src={characterInfo?.image}
             alt={characterInfo?.name}
-            className="rounded-lg object-contain max-h-40"
+            className="rounded-lg object-contain "
           />
           <div className="max-w-40 flex justify-start items-center space-x-2">
             <p className="text-white shrink font-['Montserrat_Alternates'] font-bold text-sm">

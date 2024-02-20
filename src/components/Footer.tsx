@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Footer: FC = () => {
   return (
-    <div className="bg-zinc-700 p-10 px-14">
+    <footer className="bg-zinc-700 p-10 px-14">
       <div className="container mx-auto flex flex-col space-y-5 items-center justify-center">
         <img
           src="../../public/images/logo.png"
@@ -29,7 +29,7 @@ const Footer: FC = () => {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
