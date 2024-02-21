@@ -39,10 +39,10 @@ export default function Home() {
   };
 
   return (
-    <div className="h-full xl:h-[720px]">
+    <div className="h-full xl:min-h-[720px]">
       <div className="h-full bg-cover bg-[url('/images/rick_morty_bg_img.png')]">
         <div className="bg-black bg-opacity-75 w-full h-full px-12 py-12 flex justify-center">
-          <div className="p-16 flex flex-col items-center justify-center space-y-8 lg:items-start  animate-slideUp">
+          <div className="py-16 flex flex-col items-center justify-center space-y-8 lg:items-start  animate-slideUp">
             <img
               src="/images/logo.png"
               alt="background-rick-morty-image"

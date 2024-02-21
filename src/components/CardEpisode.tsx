@@ -15,7 +15,7 @@ const CardEpisode: FC<CardEpisodeProps> = ({ episode, name, air_date, id }) => {
     navigate(`/episode/${id}`);
   };
   return (
-    <div className="relative w-[368px] h-[180px] border-2 border-cyanLight rounded flex items-center justify-center">
+    <div className="relative w-72 h-[180px] border-2 border-cyanLight rounded flex items-center justify-center sm:w-[368px] ">
       <img
         src="/images/rick_img_test.png"
         alt="rick image"

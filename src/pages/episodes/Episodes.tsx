@@ -37,7 +37,7 @@ export default function Episodes() {
           </div>
         </div>
       </div>
-      <div className="flex-1 mt-10 px-12 py-10 animate-slideUp flex flex-col items-center space-y-10">
+      <div className="flex-1 mt-10  py-10 animate-slideUp flex flex-col items-center space-y-10">
         {isLoading && <LoadingMessage />}
         {(isError || data?.error || !data) && (
           <DisplayError error={error} data={data} />
