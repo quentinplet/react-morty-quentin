@@ -3,7 +3,7 @@ import Router from "./router/router";
 
 export default function App() {
   return (
-    <div className="relative">
+    <div>
       <Layout>
         <Router />
       </Layout>
