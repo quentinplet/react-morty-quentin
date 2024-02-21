@@ -1,55 +1,32 @@
-# CAS PRATIQUE REACT - REACT MORTY
-
-## INSTALLATION
-
-```bash
-git clone https://github.com/William29302/react-morty-starter.git
-cd react-morty-starter
-npm install
-npm run dev
-```
+# CAS PRATIQUE REACT - REACT MORTY - Quentin Plet
 
 ## Cas Pratique : Développement d'une Application React consommant l'API Rick et Morty
 
-## Objectif
+Application React affichant la liste des épisodes de la série Rick et Morty ainsi que diverses informations pour chaque épisode. L'application est totalement responsive.
 
-Développer une application React utilisant le starter fourni, consommant l'API publique de Rick et Morty. L'application doit être responsive, utiliser React-Query pour gérer les requêtes API et mettre en place le routing.
+Une démo en ligne est disponible ici : https://react-morty-quentin.vercel.app/
 
-## Instructions
+## Choix de conception
 
-En utilisant le starter fourni et en suivant le design fourni, développez une application React qui répond aux points suivants :
+Je suis parti du [starter](https://github.com/William29302/react-morty-starter) fournit comme point de départ.
+J'ai utilisé les technologies suivantes :
 
-1. **API Rick et Morty :**
+1. React, Typescript, React-Router pour le routing et React-Query pour les requêtes API.
+2. TailwindCSS comme framework CSS pour le layout, l'intégration de la maquette et la gestion du responsive.
+3. React-Icons pour les différentes icônes.
+4. Vercel pour le deploiement et l'hébergement.
 
-   - Consommez l'API publique de Rick et Morty pour afficher des informations sur les personnages & épisodes.
+### Pagination et gestion d'erreurs
 
-2. **Responsive Design :**
+La pagination utilise les informations fournies par l'[API RICK & MORTY](https://rickandmortyapi.com/documentation/#rest)
 
-   - Assurez-vous que l'application soit responsive, permettant une expérience utilisateur optimale sur différentes tailles d'écrans.
+J'ai utilisé React-Query pour afficher le chargement et catch d'éventuelles erreurs lors de requêtes API.
 
-3. **React-Query :**
+## Pour exécuter l'application localement
 
-   - Utilisez React-Query pour gérer les requêtes API et cachez les requêtes au moyen de cette bibliothèque.
-
-4. **Routing :**
-
-   - Mettez en place le routing pour permettre la navigation entre les différentes pages de l'application.
-
-5. **Pagination :**
-   - Mettez en place la pagination pour l'affichage progressif des épisodes ( j'ai choisi une api qui facilite la tâche d'intégration de la pagination, ne me remerciez pas :p ).
-
-## Livraison
-
-Soumettez votre app sous forme de lien vers un repository GitHub, accompagné d'un fichier README expliquant votre approche, les choix de conception, et les étapes pour exécuter l'application localement. Supprimer le .git ( fichier invisible pour délier le projet et le connecter à votre propre repository ). Pensez à ajouter les node_modules dans le gitignore.
-
-# Informations complémentaires
-
-J'ai préparé un starter mais si vous souhaitez modifier la structure du projet, vous pouvez le faire, Organisez vous comme bon vous semble.
-
-Vous pouvez également utiliser un framework CSS tels que TailwindCSS ou un préprocesseurs tels que SASS.
-
-Vous pouvez utiliser les icônes SVG de votre choix, ou utiliser une bibliothèque telle que React-Icons.
-
-[API RICK & MORTY](https://rickandmortyapi.com/documentation/#rest)
-
-N'hésitez pas à me contacter si vous avez des questions. Bon courage, impatients de voir votre travail !
+```bash
+git clone https://github.com/quentinplet/react-morty-quentin.git
+cd react-morty-quentin
+npm install
+npm run dev
+```
