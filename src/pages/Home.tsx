@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useFetchAll, useFetchOne, useFetchSome } from "../hooks/useFetch";
+import { useFetchAll, useFetchSome } from "../hooks/useFetch";
 import { EpisodeType } from "../types";
 import Loading from "../components/common/LoadingMessage";
-import ErrorMessage from "./error/ErrorMessage";
 import CardEpisode from "../components/CardEpisode";
 import DisplayError from "./error/DisplayError";
 
@@ -41,11 +40,11 @@ export default function Home() {
 
   return (
     <div className="h-full xl:h-[720px]">
-      <div className="h-full bg-cover bg-[url('../../public/images/rick_morty_bg_img.png')]">
+      <div className="h-full bg-cover bg-[url('/images/rick_morty_bg_img.png')]">
         <div className="bg-black bg-opacity-75 w-full h-full px-12 py-12 flex justify-center">
           <div className="p-16 flex flex-col items-center justify-center space-y-8 lg:items-start  animate-slideUp">
             <img
-              src="../../public/images/logo.png"
+              src="/images/logo.png"
               alt="background-rick-morty-image"
               className="max-w-72 animate-fadeIn"
             />

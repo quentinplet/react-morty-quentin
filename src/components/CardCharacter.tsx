@@ -6,7 +6,6 @@ import { PiGenderNeuter } from "react-icons/pi";
 import { PiQuestion } from "react-icons/pi";
 import { Character } from "../types";
 import LoadingMessage from "./common/LoadingMessage";
-import ErrorMessage from "../pages/error/ErrorMessage";
 import DisplayError from "../pages/error/DisplayError";
 
 interface CardCharacterProps {

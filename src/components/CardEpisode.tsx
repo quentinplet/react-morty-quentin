@@ -17,8 +17,8 @@ const CardEpisode: FC<CardEpisodeProps> = ({ episode, name, air_date, id }) => {
   return (
     <div className="relative w-[368px] h-[180px] border-2 border-cyanLight rounded flex items-center justify-center">
       <img
-        src="../../../public/images/rick_img_test.png"
-        alt=""
+        src="/images/rick_img_test.png"
+        alt="rick image"
         className="object-cover w-full h-full animate-fadeIn"
       />
       <div className="absolute bg-cyanBackground bg-opacity-50 w-full h-full flex justify-between items-end p-3">

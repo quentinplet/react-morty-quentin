@@ -6,7 +6,7 @@ const Footer: FC = () => {
     <footer className="bg-zinc-700 p-10 px-14">
       <div className="container mx-auto flex flex-col space-y-5 items-center justify-center">
         <img
-          src="../../public/images/logo.png"
+          src="/images/logo.png"
           alt="logo-rick-morty"
           className="w-[185px] h-[65px] md:self-start"
         />

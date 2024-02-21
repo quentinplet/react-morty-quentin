@@ -2,7 +2,6 @@ import { useQuery } from "react-query";
 import ApiService from "../service/api.service";
 
 function useFetchOne(key: "episode" | "character", id: string) {
-  //   return useQuery([info], () => ApiService.GETONE(url));
   return useQuery({
     queryKey: [key, id],
     queryFn: () => ApiService.GETONE(key, id),

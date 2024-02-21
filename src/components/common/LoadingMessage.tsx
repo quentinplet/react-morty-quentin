@@ -1,4 +1,6 @@
-const LoadingMessage = () => {
+import { FC } from "react";
+
+const LoadingMessage: FC = () => {
   return (
     <div className="flex justify-center items-center space-x-5">
       <svg
