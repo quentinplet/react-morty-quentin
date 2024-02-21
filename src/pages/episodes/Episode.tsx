@@ -31,7 +31,7 @@ export default function Episode() {
           <>
             <div className="mx-auto max-w-96 flex flex-col items-start space-y-8 lg:grid lg:grid-cols-3 lg:max-w-full lg:gap-x-16">
               <div className="flex flex-col space-y-5 w-full ">
-                <h1 className=" text-white font-['Montserrat_Alternates'] font-bold text-2xl">
+                <h1 className=" text-white font-['Montserrat_Alternates'] font-bold text-2xl animate-fadeIn">
                   <span className="border-b border-cyan-400 inline-block">
                     {data.name}
                   </span>
@@ -40,11 +40,11 @@ export default function Episode() {
                   <img
                     src="../../../public/images/rick_img_test.png"
                     alt=""
-                    className="rounded-lg object-cover w-full max-h-64 md:max-h-72"
+                    className="rounded-lg object-cover w-full max-h-64 md:max-h-72 animate-fadeIn"
                   />
                 </div>
               </div>
-              <div className="text-white font-['Montserrat_Alternates'] font-bold text-xl flex flex-col w-full space-y-4">
+              <div className="text-white font-['Montserrat_Alternates'] font-bold text-xl flex flex-col w-full space-y-4 animate-fadeIn">
                 <p>Episode: {data.episode}</p>
                 <div className="border-b border-cyan-400"></div>
                 <p>Release date : {data.air_date}</p>

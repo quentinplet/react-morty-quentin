@@ -54,7 +54,7 @@ export default function Home() {
             <img
               src="../../public/images/logo.png"
               alt="background-rick-morty-image"
-              className="max-w-72"
+              className="max-w-72 animate-fadeIn"
             />
             <h1 className="font-primary uppercase text-2xl font-bold border-b-2 border-cyanLight">
               Lasts Episodes

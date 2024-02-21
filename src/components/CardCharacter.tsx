@@ -31,7 +31,7 @@ const CardCharacter: FC<CardCharacterProps> = ({ url }) => {
   };
 
   return (
-    <div className="flex flex-col items-start space-y-4 max-w-48">
+    <div className="flex flex-col items-start space-y-4 max-w-48 animate-fadeIn">
       {isSuccess && (
         <>
           <img
