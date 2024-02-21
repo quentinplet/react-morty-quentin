@@ -17,12 +17,12 @@ const Footer: FC = () => {
           </p>
           <div className="flex justify-center space-x-10">
             <span>
-              <Link to="/" className="hover:border-b border-cyan-400">
+              <Link to="/" className="hover:text-cyanLight">
                 Home
               </Link>
             </span>
             <span>
-              <Link to="/episodes" className="hover:border-b border-cyan-400">
+              <Link to="/episodes" className=" hover:text-cyanLight">
                 Episodes
               </Link>
             </span>
