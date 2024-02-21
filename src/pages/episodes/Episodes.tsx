@@ -61,7 +61,7 @@ export default function Episodes() {
         {(isError || data?.error) && displayError()}
         {isSuccess && (
           <>
-            <div className="grid grid-cols-1 gap-y-8 justify-items-center md:grid-cols-3 md:grid-rows-2 md:justify-items-center">
+            <div className="grid grid-cols-1 gap-8 justify-items-center lg:grid-cols-2 xl:grid-cols-3">
               {listOfEpisodes?.map((episode: EpisodeType) => (
                 <CardEpisode
                   key={episode.id}

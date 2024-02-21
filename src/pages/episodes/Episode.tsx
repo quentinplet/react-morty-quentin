@@ -24,12 +24,12 @@ export default function Episode() {
 
   return (
     <div className="h-full bg-zinc-600">
-      <div className="min-h-screen p-5 md:px-20 md:pt-28 space-y-20 animate-slideUp">
+      <div className="min-h-screen p-5 md:px-20 pt-24 lg:pt-28 space-y-20 animate-slideUp">
         {isLoading && <LoadingMessage />}
         {isError && displayError()}
         {isSuccess && data && (
           <>
-            <div className="pt-20 mx-auto max-w-96 flex flex-col items-start space-y-8 md:grid md:grid-cols-3 md:max-w-full md:gap-x-16">
+            <div className="mx-auto max-w-96 flex flex-col items-start space-y-8 lg:grid lg:grid-cols-3 lg:max-w-full lg:gap-x-16">
               <div className="flex flex-col space-y-5 w-full ">
                 <h1 className=" text-white font-['Montserrat_Alternates'] font-bold text-2xl">
                   <span className="border-b border-cyan-400 inline-block">
