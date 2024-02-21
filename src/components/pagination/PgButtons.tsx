@@ -14,8 +14,10 @@ const PgButtons: FC<PgButtonsProps> = ({
   return (
     <button
       onClick={handleClick}
-      className={`size-9 bg-cyanLight rounded-full border border-cyanDark hover:bg-cyanDark hover:border-cyanLight ${
-        currentPage === children ? "bg-[#0090A3] border-cyanLight" : ""
+      className={`size-9 rounded-full border  hover:bg-cyanDark hover:border-cyanLight ${
+        currentPage === children
+          ? "bg-cyanDark border-cyanLight"
+          : "bg-cyanLight border-cyanDark"
       }
       `}
     >

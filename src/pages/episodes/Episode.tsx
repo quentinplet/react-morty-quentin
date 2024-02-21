@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { EpisodeType } from "../../types";
 import { useFetchOne } from "../../hooks/useFetch";
 import LoadingMessage from "../../components/common/LoadingMessage";
-import DisplayError from "../error/DisplayError";
+import DisplayError from "../../error/DisplayError";
 
 export default function Episode() {
   const { id } = useParams();
@@ -41,7 +41,7 @@ export default function Episode() {
               <div className="font-primary font-bold text-xl flex flex-col w-full space-y-4 animate-fadeIn">
                 <p>Episode: {data.episode}</p>
                 <div className="border-b border-cyanLight"></div>
-                <p>Release date : {data.air_date}</p>
+                <p className="text-pretty">Release date : {data.air_date}</p>
                 <div className="border-b border-cyanLight"></div>
                 <p>Characters: {data.characters?.length}</p>
                 <div className="border-b border-cyanLight"></div>

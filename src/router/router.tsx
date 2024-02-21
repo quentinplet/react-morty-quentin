@@ -3,7 +3,7 @@ import Home from "../pages/Home";
 import Episodes from "../pages/episodes/Episodes";
 import Episode from "../pages/episodes/Episode";
 import { useEffect } from "react";
-import ErrorPage from "../pages/error/ErrorPage";
+import ErrorPage from "../error/ErrorPage";
 
 export default function Router() {
   const location = useLocation();

@@ -3,7 +3,7 @@ import { useFetchAll, useFetchSome } from "../hooks/useFetch";
 import { EpisodeType } from "../types";
 import Loading from "../components/common/LoadingMessage";
 import CardEpisode from "../components/CardEpisode";
-import DisplayError from "./error/DisplayError";
+import DisplayError from "../error/DisplayError";
 
 export default function Home() {
   const [countEpisodes, setCountEpisodes] = useState<number>(51);

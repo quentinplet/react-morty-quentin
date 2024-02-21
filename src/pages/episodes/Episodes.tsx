@@ -4,7 +4,7 @@ import Pagination from "../../components/pagination/Pagination";
 import { useFetchAll } from "../../hooks/useFetch";
 import { EpisodeType } from "../../types";
 import LoadingMessage from "../../components/common/LoadingMessage";
-import DisplayError from "../error/DisplayError";
+import DisplayError from "../../error/DisplayError";
 
 export default function Episodes() {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -12,7 +12,7 @@ export default function Episodes() {
   const { data, isLoading, isError, error, isSuccess } =
     useFetchAll(currentPage);
 
-  const listOfEpisodes = data?.results;
+  const listOfEpisodes: EpisodeType[] = data?.results;
   const numberOfPages: number = data?.info.pages;
 
   const handlePageChange = (buttonClicked: number | string) => {

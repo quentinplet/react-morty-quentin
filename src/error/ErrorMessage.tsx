@@ -6,8 +6,6 @@ interface ErrorMessageProps {
 }
 
 const ErrorMessage: FC<ErrorMessageProps> = ({ error }) => {
-  console.log("Error: ", error);
-
   return (
     <div className="flex justify-center items-center space-x-2">
       <MdErrorOutline className="text-white size-10" />

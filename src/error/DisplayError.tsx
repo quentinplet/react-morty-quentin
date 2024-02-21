@@ -6,13 +6,11 @@ interface DisplayErrorProps {
   data?: any;
 }
 
-const DisplayError: FC<DisplayErrorProps> = (error, data?) => {
+const DisplayError: FC<DisplayErrorProps> = ({ error, data }) => {
   if (error instanceof Error) {
     return <ErrorMessage error={error.message} />;
-  } else if (data?.error) {
+  } else if (data) {
     return <ErrorMessage error={data?.error} />;
-  } else {
-    return <ErrorMessage error="An error occured" />;
   }
 };
 

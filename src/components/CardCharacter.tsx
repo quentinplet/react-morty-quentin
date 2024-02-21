@@ -6,7 +6,7 @@ import { PiGenderNeuter } from "react-icons/pi";
 import { PiQuestion } from "react-icons/pi";
 import { Character } from "../types";
 import LoadingMessage from "./common/LoadingMessage";
-import DisplayError from "../pages/error/DisplayError";
+import DisplayError from "../error/DisplayError";
 
 interface CardCharacterProps {
   url: string;
