@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import CardEpisode from "../components/CardEpisode";
 import { useFetchAll, useFetchOne, useFetchSome } from "../hooks/useFetch";
 import { EpisodeType } from "../types";
+import Loading from "../components/common/LoadingMessage";
+import ErrorMessage from "../components/common/ErrorMessage";
+import CardEpisode from "../components/CardEpisode";
 
 export default function Home() {
   const [countEpisodes, setCountEpisodes] = useState<number>(51);
@@ -15,19 +17,22 @@ export default function Home() {
     }
   }, [AllEpisodesQuery.isSuccess]);
 
-  const {
-    data: listLastEpisodes,
-    isLoading,
-    isSuccess,
-  } = useFetchSome("listOfLatestEpisodes", [
-    countEpisodes,
-    countEpisodes - 1,
-    countEpisodes - 2,
-  ]);
+  const { data, isLoading, isSuccess, isError, error, status } = useFetchSome(
+    "listOfLatestEpisodes",
+    [countEpisodes, countEpisodes - 1, countEpisodes - 2]
+  );
+
+  const displayError = () => {
+    if (error instanceof Error) {
+      return <ErrorMessage error={error.message} />;
+    } else if (data.error) {
+      return <ErrorMessage error={data.error} />;
+    }
+  };
 
   return (
-    <div className="min-h-[720px] md:h-[720px]">
-      <div className="bg-cover h-full bg-[url('../../public/images/rick_morty_bg_img.png')]">
+    <div className="h-full md:h-[720px]">
+      <div className="h-full bg-cover bg-[url('../../public/images/rick_morty_bg_img.png')]">
         <div className="bg-black bg-opacity-75 w-full h-full px-12 py-12 flex justify-center">
           <div className="flex flex-col items-center justify-center space-y-8 md:items-start  animate-slideUp">
             <img
@@ -39,9 +44,10 @@ export default function Home() {
               Lasts Episodes
             </h1>
             <div className="flex flex-col-reverse gap-y-10 justify-items-center md:flex-row-reverse md:gap-x-10 md:justify-items-center">
-              {isLoading && <p>Loading...</p>}
+              {isLoading && <Loading />}
+              {(isError || data?.error) && displayError()}
               {isSuccess &&
-                listLastEpisodes?.map((episode: EpisodeType) => (
+                data?.map((episode: EpisodeType) => (
                   <CardEpisode
                     key={episode.id}
                     name={episode.name}
@@ -50,31 +56,6 @@ export default function Home() {
                     id={episode.id}
                   />
                 ))}
-              {/* <div className="relative w-[368px] h-[180px] border-2 border-cyanLight rounded flex items-center justify-center">
-                <img
-                  src="../../../public/images/rick_img_test.png"
-                  alt=""
-                  className="object-cover w-full h-full"
-                />
-                <div className="absolute bg-cyanBackground bg-opacity-50 w-full h-full flex justify-between items-end p-3">
-                  <div className="flex flex-col font-primary">
-                    <h2 className="font-bold text-2xl">S01E01</h2>
-                    <p className="font-semibold text-base">
-                      The Ricklantis Mixup
-                    </p>
-                    <p className="font-medium text-xs">
-                      Release: September 10, 2017
-                    </p>
-                  </div>
-                  <div>
-                    <button className="bg-cyanLight max-w-28 px-4 py-1 rounded-lg border-2 border-cyanDark  hover:bg-cyanDark hover:border-cyanLight">
-                      <span className="font-primary font-bold text-sm">
-                        See more
-                      </span>
-                    </button>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>

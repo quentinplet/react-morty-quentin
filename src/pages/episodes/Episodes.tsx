@@ -3,13 +3,14 @@ import CardEpisode from "../../components/CardEpisode";
 import Pagination from "../../components/pagination/Pagination";
 import { useFetchAll } from "../../hooks/useFetch";
 import { EpisodeType } from "../../types";
+import ErrorMessage from "../../components/common/ErrorMessage";
+import LoadingMessage from "../../components/common/LoadingMessage";
 
 export default function Episodes() {
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const { data, isLoading, isError, error, isSuccess } =
     useFetchAll(currentPage);
-  isError && console.log(error);
 
   const listOfEpisodes = data?.results;
   const numberOfPages: number = data?.info.pages;
@@ -26,8 +27,16 @@ export default function Episodes() {
     window.scrollTo(0, 0);
   };
 
+  const displayError = () => {
+    if (error instanceof Error) {
+      return <ErrorMessage error={error.message} />;
+    } else if (data.error) {
+      return <ErrorMessage error={data.error} />;
+    }
+  };
+
   return (
-    <div className="h-full bg-zinc-600">
+    <div className="h-full bg-zinc-600 flex flex-col">
       <div className="w-full h-72">
         {/* <img
           className="h-full w-full object-cover bg-cyanLight opacity-50"
@@ -47,26 +56,28 @@ export default function Episodes() {
           </h1>
         </div> */}
       </div>
-      <div className="mt-10 px-12 py-10 animate-slideUp flex flex-col items-center space-y-10">
-        <div className="grid grid-cols-1 gap-y-8 justify-items-center md:grid-cols-3 md:grid-rows-2 md:justify-items-center">
-          {isLoading && <p>Loading...</p>}
-          {/* {isError && <p>{error}</p>} */}
-          {listOfEpisodes?.map((episode: EpisodeType) => (
-            <CardEpisode
-              key={episode.id}
-              name={episode.name}
-              episode={episode.episode}
-              air_date={episode.air_date}
-              id={episode.id}
-            />
-          ))}
-        </div>
+      <div className="flex-1 mt-10 px-12 py-10 animate-slideUp flex flex-col items-center space-y-10">
+        {isLoading && <LoadingMessage />}
+        {(isError || data?.error) && displayError()}
         {isSuccess && (
-          <Pagination
-            currentPage={currentPage}
-            handlePageChange={handlePageChange}
-            info={data.info}
-          />
+          <>
+            <div className="grid grid-cols-1 gap-y-8 justify-items-center md:grid-cols-3 md:grid-rows-2 md:justify-items-center">
+              {listOfEpisodes?.map((episode: EpisodeType) => (
+                <CardEpisode
+                  key={episode.id}
+                  name={episode.name}
+                  episode={episode.episode}
+                  air_date={episode.air_date}
+                  id={episode.id}
+                />
+              ))}
+            </div>
+            <Pagination
+              currentPage={currentPage}
+              handlePageChange={handlePageChange}
+              info={data.info}
+            />
+          </>
         )}
       </div>
     </div>

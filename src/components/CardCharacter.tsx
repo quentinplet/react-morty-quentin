@@ -4,6 +4,7 @@ import { PiGenderMale } from "react-icons/pi";
 import { PiGenderFemale } from "react-icons/pi";
 import { PiGenderNeuter } from "react-icons/pi";
 import { PiQuestion } from "react-icons/pi";
+import { Character } from "../types";
 
 interface CardCharacterProps {
   url: string;
@@ -15,12 +16,12 @@ interface CharacterGenderIconTypes {
 
 const CardCharacter: FC<CardCharacterProps> = ({ url }) => {
   const id = url.split("/").pop();
-  const {
-    data: characterInfo,
-    isLoading,
-    isError,
-    isSuccess,
-  } = useFetchOne("character", id as string);
+  const { data, isLoading, isError, isSuccess } = useFetchOne(
+    "character",
+    id as string
+  );
+
+  const characterInfo: Character = data;
 
   const CharacterGenderIcon: CharacterGenderIconTypes = {
     Male: <PiGenderMale />,
@@ -34,13 +35,13 @@ const CardCharacter: FC<CardCharacterProps> = ({ url }) => {
       {isSuccess && (
         <>
           <img
-            src={characterInfo?.image}
-            alt={characterInfo?.name}
+            src={characterInfo.image}
+            alt={characterInfo.name}
             className="rounded-lg object-contain "
           />
           <div className="max-w-40 flex justify-start items-center space-x-2">
             <p className="text-white shrink font-['Montserrat_Alternates'] font-bold text-sm">
-              {characterInfo?.name}
+              {characterInfo.name}
             </p>
             <div className="flex-auto text-cyanLight font-bold text-xl relative bottom-0.5">
               {CharacterGenderIcon[characterInfo.gender]}
