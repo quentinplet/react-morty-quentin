@@ -29,14 +29,14 @@ export default function Episode() {
         {isError && displayError()}
         {isSuccess && data && (
           <>
-            <div className="mx-auto max-w-96 flex flex-col items-start space-y-8 md:grid md:grid-cols-3 md:max-w-full md:gap-x-16">
+            <div className="pt-20 mx-auto max-w-96 flex flex-col items-start space-y-8 md:grid md:grid-cols-3 md:max-w-full md:gap-x-16">
               <div className="flex flex-col space-y-5 w-full ">
                 <h1 className=" text-white font-['Montserrat_Alternates'] font-bold text-2xl">
                   <span className="border-b border-cyan-400 inline-block">
                     {data.name}
                   </span>
                 </h1>
-                <div className="flex justify-center items-center w- md:max-w-[360px]">
+                <div className="flex justify-center items-center  md:max-w-[360px]">
                   <img
                     src="../../../public/images/rick_img_test.png"
                     alt=""
