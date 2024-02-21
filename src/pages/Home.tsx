@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useFetchAll, useFetchOne, useFetchSome } from "../hooks/useFetch";
 import { EpisodeType } from "../types";
 import Loading from "../components/common/LoadingMessage";
-import ErrorMessage from "../components/common/ErrorMessage";
+import ErrorMessage from "./error/ErrorMessage";
 import CardEpisode from "../components/CardEpisode";
+import DisplayError from "./error/DisplayError";
 
 export default function Home() {
   const [countEpisodes, setCountEpisodes] = useState<number>(51);
@@ -17,18 +18,10 @@ export default function Home() {
     }
   }, [AllEpisodesQuery.isSuccess]);
 
-  const { data, isLoading, isSuccess, isError, error, status } = useFetchSome(
+  const { data, isLoading, isSuccess, isError, error } = useFetchSome(
     "listOfLatestEpisodes",
     [countEpisodes, countEpisodes - 1, countEpisodes - 2]
   );
-
-  const displayError = () => {
-    if (error instanceof Error) {
-      return <ErrorMessage error={error.message} />;
-    } else if (data.error) {
-      return <ErrorMessage error={data.error} />;
-    }
-  };
 
   const displayEpisodes = () => {
     if (isSuccess && data) {
@@ -61,7 +54,9 @@ export default function Home() {
             </h1>
             <div className="grid grid-cols-1 gap-10 justify-items-center lg:grid-cols-2 lg:items-center xl:flex xl:gap-x-5">
               {isLoading && <Loading />}
-              {(isError || data?.error) && displayError()}
+              {(isError || data?.error || !data) && (
+                <DisplayError error={error} data={data} />
+              )}
               {isSuccess && displayEpisodes()}
             </div>
           </div>

@@ -3,8 +3,9 @@ import CardEpisode from "../../components/CardEpisode";
 import Pagination from "../../components/pagination/Pagination";
 import { useFetchAll } from "../../hooks/useFetch";
 import { EpisodeType } from "../../types";
-import ErrorMessage from "../../components/common/ErrorMessage";
+import ErrorMessage from "../error/ErrorMessage";
 import LoadingMessage from "../../components/common/LoadingMessage";
+import DisplayError from "../error/DisplayError";
 
 export default function Episodes() {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -26,15 +27,6 @@ export default function Episodes() {
     }
     window.scrollTo(0, 0);
   };
-
-  const displayError = () => {
-    if (error instanceof Error) {
-      return <ErrorMessage error={error.message} />;
-    } else if (data.error) {
-      return <ErrorMessage error={data.error} />;
-    }
-  };
-
   return (
     <div className="h-full bg-zinc-600 flex flex-col">
       <div className="w-full h-72">
@@ -58,7 +50,9 @@ export default function Episodes() {
       </div>
       <div className="flex-1 mt-10 px-12 py-10 animate-slideUp flex flex-col items-center space-y-10">
         {isLoading && <LoadingMessage />}
-        {(isError || data?.error) && displayError()}
+        {(isError || data?.error || !data) && (
+          <DisplayError error={error} data={data} />
+        )}
         {isSuccess && (
           <>
             <div className="grid grid-cols-1 gap-8 justify-items-center lg:grid-cols-2 xl:grid-cols-3">

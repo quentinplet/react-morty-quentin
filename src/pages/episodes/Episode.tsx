@@ -1,10 +1,10 @@
-import { FC, useEffect, useState } from "react";
 import CardCharacter from "../../components/CardCharacter";
 import { useParams } from "react-router-dom";
 import { EpisodeType } from "../../types";
 import { useFetchOne } from "../../hooks/useFetch";
-import ErrorMessage from "../../components/common/ErrorMessage";
+import ErrorMessage from "../error/ErrorMessage";
 import LoadingMessage from "../../components/common/LoadingMessage";
+import DisplayError from "../error/DisplayError";
 
 export default function Episode() {
   const { id } = useParams();
@@ -14,20 +14,16 @@ export default function Episode() {
     id as string
   );
 
-  const displayError = () => {
-    if (error instanceof Error) {
-      return <ErrorMessage error={error.message} />;
-    } else if (data.error) {
-      return <ErrorMessage error={data.error} />;
-    }
-  };
+  const infoEpisode: EpisodeType = data;
 
   return (
     <div className="h-full bg-zinc-600">
       <div className="min-h-screen p-5 md:px-20 pt-24 lg:pt-28 space-y-20 animate-slideUp">
         {isLoading && <LoadingMessage />}
-        {isError && displayError()}
-        {isSuccess && data && (
+        {(isError || data?.error || !data) && (
+          <DisplayError error={error} data={data} />
+        )}
+        {isSuccess && infoEpisode && (
           <>
             <div className="mx-auto max-w-96 flex flex-col items-start space-y-8 lg:grid lg:grid-cols-3 lg:max-w-full lg:gap-x-16">
               <div className="flex flex-col space-y-5 w-full ">

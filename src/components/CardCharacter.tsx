@@ -5,6 +5,9 @@ import { PiGenderFemale } from "react-icons/pi";
 import { PiGenderNeuter } from "react-icons/pi";
 import { PiQuestion } from "react-icons/pi";
 import { Character } from "../types";
+import LoadingMessage from "./common/LoadingMessage";
+import ErrorMessage from "../pages/error/ErrorMessage";
+import DisplayError from "../pages/error/DisplayError";
 
 interface CardCharacterProps {
   url: string;
@@ -16,7 +19,7 @@ interface CharacterGenderIconTypes {
 
 const CardCharacter: FC<CardCharacterProps> = ({ url }) => {
   const id = url.split("/").pop();
-  const { data, isLoading, isError, isSuccess } = useFetchOne(
+  const { data, isLoading, isError, error, isSuccess } = useFetchOne(
     "character",
     id as string
   );
@@ -32,6 +35,10 @@ const CardCharacter: FC<CardCharacterProps> = ({ url }) => {
 
   return (
     <div className="flex flex-col items-start space-y-4 max-w-48 animate-fadeIn">
+      {isLoading && <LoadingMessage />}
+      {(isError || data?.error || !data) && (
+        <DisplayError error={error} data={data} />
+      )}
       {isSuccess && (
         <>
           <img
