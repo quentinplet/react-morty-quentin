@@ -19,10 +19,10 @@ const CardEpisode: FC<CardEpisodeProps> = ({ episode, name, air_date, id }) => {
       <img
         src="../../../public/images/rick_img_test.png"
         alt=""
-        className="object-cover w-full h-full"
+        className="object-cover w-full h-full animate-fadeIn"
       />
       <div className="absolute bg-cyanBackground bg-opacity-50 w-full h-full flex justify-between items-end p-3">
-        <div className="flex flex-col font-primary max-w-44">
+        <div className="flex flex-col font-primary max-w-44 animate-fadeIn">
           <h2 className="font-bold text-2xl">{episode}</h2>
           <p className="font-semibold text-base">{name}</p>
           <p className="font-medium text-xs">Release: {air_date}</p>
