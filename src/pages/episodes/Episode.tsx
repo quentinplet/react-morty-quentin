@@ -6,10 +6,10 @@ import { useFetchOne } from "../../hooks/useFetch";
 
 export default function Episode() {
   const { id } = useParams();
-  const url = `https://rickandmortyapi.com/api/episode/${id}`;
+  // const url = `https://rickandmortyapi.com/api/episode/${id}`;
   const { data, isLoading, isError, error, isSuccess } = useFetchOne(
     "episode",
-    url
+    id as string
   );
 
   if (isLoading) {
@@ -22,7 +22,6 @@ export default function Episode() {
 
   if (isSuccess && data) {
     const { name, episode, air_date, characters } = data as EpisodeType;
-    console.log(data);
 
     return (
       <div className=" h-full bg-zinc-600">

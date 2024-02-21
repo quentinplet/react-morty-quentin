@@ -14,12 +14,13 @@ interface CharacterGenderIconTypes {
 }
 
 const CardCharacter: FC<CardCharacterProps> = ({ url }) => {
+  const id = url.split("/").pop();
   const {
     data: characterInfo,
     isLoading,
     isError,
     isSuccess,
-  } = useFetchOne(url, url);
+  } = useFetchOne("character", id as string);
 
   const CharacterGenderIcon: CharacterGenderIconTypes = {
     Male: <PiGenderMale />,

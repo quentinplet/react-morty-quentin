@@ -1,21 +1,29 @@
+import { useEffect, useState } from "react";
 import CardEpisode from "../components/CardEpisode";
-import { useFetchAll, useFetchOne } from "../hooks/useFetch";
+import { useFetchAll, useFetchOne, useFetchSome } from "../hooks/useFetch";
 import { EpisodeType } from "../types";
 
 export default function Home() {
-  // const { data, isLoading, isError, isSuccess } = useFetchAll(1);
+  const [countEpisodes, setCountEpisodes] = useState<number>(51);
 
-  // if (isSuccess) {
-  //   const numbersOfEpisodes = data?.info.count;
-  //   const latestEpisodesList = `${numbersOfEpisodes}, ${
-  //     numbersOfEpisodes - 1
-  //   }, ${numbersOfEpisodes - 2}`;
-  // }
+  const AllEpisodesQuery = useFetchAll(1);
 
-  const { data, isLoading, isError, isSuccess } = useFetchOne(
-    "listOfLatestEpisodes",
-    "https://rickandmortyapi.com/api/episode/49,50,51"
-  );
+  useEffect(() => {
+    if (AllEpisodesQuery.isSuccess) {
+      const infoAllEpisodes = AllEpisodesQuery.data?.info;
+      setCountEpisodes(infoAllEpisodes?.count);
+    }
+  }, [AllEpisodesQuery.isSuccess]);
+
+  const {
+    data: listLastEpisodes,
+    isLoading,
+    isSuccess,
+  } = useFetchSome("listOfLatestEpisodes", [
+    countEpisodes,
+    countEpisodes - 1,
+    countEpisodes - 2,
+  ]);
 
   return (
     <div className="min-h-[720px] md:h-[720px]">
@@ -30,10 +38,10 @@ export default function Home() {
             <h1 className="font-primary uppercase text-2xl font-bold border-b-2 border-cyanLight">
               Lasts Episodes
             </h1>
-            <div className="grid grid-cols-1 gap-y-10 justify-items-center md:grid-cols-3 md:gap-x-10 md:justify-items-center">
+            <div className="flex flex-col-reverse gap-y-10 justify-items-center md:flex-row-reverse md:gap-x-10 md:justify-items-center">
               {isLoading && <p>Loading...</p>}
               {isSuccess &&
-                data?.map((episode: EpisodeType) => (
+                listLastEpisodes?.map((episode: EpisodeType) => (
                   <CardEpisode
                     key={episode.id}
                     name={episode.name}
