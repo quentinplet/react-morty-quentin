@@ -8,7 +8,7 @@ Une démo en ligne est disponible ici : https://react-morty-quentin.vercel.app/
 
 ## Choix de conception
 
-Je suis parti du [starter](https://github.com/William29302/react-morty-starter) fournit comme point de départ.
+Je suis parti du [starter](https://github.com/William29302/react-morty-starter) fourni comme point de départ.
 J'ai utilisé les technologies suivantes :
 
 1. React, Typescript, React-Router pour le routing et React-Query pour les requêtes API.
